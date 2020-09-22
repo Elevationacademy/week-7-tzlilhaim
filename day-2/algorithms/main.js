@@ -185,3 +185,91 @@ const getLetter = () => {
 }
 
 getLetter()
+
+// Extensions:
+const secretEncrypt = (word, secret) => {
+  const abc = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "z",
+    "y",
+    "z",
+  ]
+
+  const splitedWord = word.split("")
+  const splittedSecret = secret.split("")
+  let encrypted = ""
+  for (i = 0; i < splitedWord.length; i++) {
+    let indexWord = abc.indexOf(splitedWord[i])
+    let indexSecret = i < splittedSecret.length ? i : 0
+    let indexTargetSecret = abc.indexOf(splittedSecret[indexSecret])
+    encrypted += abc[indexWord + indexTargetSecret]
+  }
+  console.log(encrypted)
+}
+
+secretEncrypt("elephant", "cab")
+
+const secretDecrypt = (encryptedMessage, secret) => {
+  const abc = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "z",
+    "y",
+    "z",
+  ]
+  const splitedEncryptedMsg = encryptedMessage.split("")
+  const splittedSecret = secret.split("")
+  let decrypted = ""
+  for (i = 0; i < splitedEncryptedMsg.length; i++) {
+    let indexMsg = abc.indexOf(splitedEncryptedMsg[i])
+    let indexSecret = i < splittedSecret.length ? i : 0
+    let indexTargetSecret = abc.indexOf(splittedSecret[indexSecret])
+    decrypted += abc[indexMsg - indexTargetSecret]
+  }
+  console.log(decrypted)
+}
+
+secretDecrypt("glfrjcpv", "cab")
