@@ -186,7 +186,50 @@ const getLetter = () => {
 
 getLetter()
 
-// Extensions:
+// Extension 1:
+const printInLoop = (words) => {
+  setInterval(() => {
+    for (let word of words) {
+      console.log(word)
+    }
+  }, 3000)
+}
+
+//printInLoop(["down", "the", "rabbit", "hole"])
+
+// Extension 2:
+const getDistance = (p1, p2) => {
+  const distance = Math.sqrt(
+    Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2)
+  )
+  return distance
+}
+
+const findClosest = (points, point) => {
+  let closestPoint = 0
+  let closestDistance = getDistance(points[closestPoint], point)
+  for (i = 1; i < points.length; i++) {
+    let distance = getDistance(points[i], point)
+    if (distance < closestDistance) {
+      closestDistance = distance
+      closestPoint = i
+    }
+  }
+  return { coordinates: points[closestPoint], distance:closestDistance }
+}
+
+let pizzaLocations = [
+  { x: 6, y: 12 },
+  { x: 3, y: 1 },
+  { x: 9, y: 0 },
+  { x: 4, y: 10 },
+]
+
+let homeLocation = { x: 4, y: 2 }
+
+console.log(findClosest(pizzaLocations, homeLocation))
+
+// Extension 3:
 const secretEncrypt = (word, secret) => {
   const abc = [
     "a",
@@ -231,6 +274,7 @@ const secretEncrypt = (word, secret) => {
 
 secretEncrypt("elephant", "cab")
 
+// Extension 4:
 const secretDecrypt = (encryptedMessage, secret) => {
   const abc = [
     "a",
